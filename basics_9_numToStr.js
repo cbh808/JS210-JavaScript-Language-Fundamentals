@@ -1,34 +1,27 @@
-const DIGITS = {
-  '0': 0, '1': 1, '2': 2, '3': 3, '4': 4,
-  '5': 5, '6': 6, '7': 7, '8': 8, '9': 9,
-};
+// Convert strings to numbers by writing a function that takes a positive
+// integer or zero, and converts it to a string.
+// No use of any of standard conversion functions available in JS
+// e.g. String(), Number.prototype.toString, or an expression 
+// such as '' + number. 
+// Your function should construct the string by analyzing and manipulating 
+// the number.
 
-function stringToInteger(string) {
-  let value = 0;
-  let negative = false;
-  let positive = false;
+const DIGITS = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
-  for (let idx = 0; idx < string.length; idx += 1) {
-    let key = string[idx];
+function integerToString(integer) {
+  let string = '';
+  let number;
 
-    if (key === '-') {
-      negative = true;
-      continue;
-    } else if (key === '+') {
-      positive = true;
-      continue;
-    }
+  do {
+    number = integer % 10;
+    string = DIGITS[number] + string;
+    integer = (integer - number) / 10;
+  } while (integer > 0);
 
-    value += DIGITS[key] * Math.pow(10, (string.length - 1) - idx);
-  }
-  if (negative) {
-    return '-' + value;
-  } else if (positive) {
-    return '+' + value;
-  } else
-    return value;
+  return string;
 }
 
-console.log(stringToSignedInteger('4321'));      // 4321
-console.log(stringToSignedInteger('-570'));      // -570
-console.log(stringToSignedInteger('+100'));      // 100
+
+console.log(integerToString(4321));      // "4321"
+console.log(integerToString(0));         // "0"
+console.log(integerToString(5000));      // "5000"

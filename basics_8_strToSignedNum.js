@@ -1,29 +1,28 @@
+// extend function of previous problem
+
 const DIGITS = {
   '0': 0, '1': 1, '2': 2, '3': 3, '4': 4,
   '5': 5, '6': 6, '7': 7, '8': 8, '9': 9,
 };
 
-function stringToSignedInteger(string) {
+function stringToInteger(string) {
   let value = 0;
-  let negative = false;
-
   for (let idx = 0; idx < string.length; idx += 1) {
     let key = string[idx];
-
-    if (key === '-') {
-      negative = true;
-      continue;
-    } else if (key === '+') {
-      continue;
-    }
-
     value += DIGITS[key] * Math.pow(10, (string.length - 1) - idx);
   }
-  if (negative) {
-    value *= -1;
-  }
-
   return value;
+}
+
+function stringToSignedInteger(string) {
+
+  if (string[0] === '-') {
+    return -(stringToInteger(string.slice(1)));
+  } else if (string[0] === '+') {
+    return (stringToInteger(string.slice(1)));
+  } else {
+    return stringToInteger(string);
+  }
 }
 
 console.log(stringToSignedInteger('4321'));      // 4321
