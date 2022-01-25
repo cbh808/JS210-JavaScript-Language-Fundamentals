@@ -4,8 +4,22 @@
 //     It should accept either a string or an array as an argument
 //     It should return a new string or array
 
+/*
+input: collection, index-based
+output: collection, values at each index reversed
+
+Data structures:
+strings are primitives and chars cannot be reassigned directly
+array elements can be reassigned directly in a new result array
+
+Alg.
+check if string or array
+
+iterate over indexes from index 0 to end of collection
+
+
 function reverse(inputForReversal) {
-  // ...
+  
 }
 
 reverse('Hello');           // "olleH"
