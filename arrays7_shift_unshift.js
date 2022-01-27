@@ -1,16 +1,3 @@
-/*
-Array Shift and Unshift
-implement own Array.prototype.shift and Array.prototype.unshift methods.
-
-shift removes the first element from array
-returns that element
-if array empty, shift returns undefined.
-
-unshift adds one or more elements to the start of an array
-returns new length of the array
-
-Both methods mutate the original array.
-*/
 function shift(array) {
   let firstElement = array[0];  // undefined if array is empty
   array.splice(0, 1);
